@@ -1,5 +1,5 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: #ffffff;
   padding: 40px;
   color: #2d2d2d;
@@ -52,8 +52,8 @@ pre#output {
   box-shadow: 0 0 10px rgba(138, 63, 255, 0.08);
   white-space: pre-wrap;
   border: 1px solid #e0d7ff;
-  white-space: pre-wrap;  /* Satır sonlarını ve boşlukları uygular, gerektiğinde sarar */
-  display: block;         /* Flex yerine blok yap */
+  white-space: pre-wrap;  
+  display: block;         
 }
 
 
