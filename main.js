@@ -1,14 +1,23 @@
-
-let pyodideReadyPromise = loadPyodide();
+let pyodideReadyPromise;
+window.addEventListener('load', () => {
+  pyodideReadyPromise = loadPyodide();
+});
 
 async function runCode() {
   const output = document.getElementById("output");
-  output.textContent = "Çalıştırılıyor...";
-  let pyodide = await pyodideReadyPromise;
+  output.textContent = "Çalıştırılıyor...\n";
+
+  const pyodide = await pyodideReadyPromise;
+
+  pyodide.setStdout({ batched: (data) => output.textContent += data });
+  pyodide.setStderr({ batched: (data) => output.textContent += "\nHata: " + data });
+
+  output.textContent = "";
+
   try {
-    let result = await pyodide.runPythonAsync(document.getElementById("code").value);
-    output.textContent = result ?? "(Çıktı yok)";
-  } catch (err) {
-    output.textContent = "Hata:\n" + err;
+    let code = document.getElementById("code").value;
+    await pyodide.runPythonAsync(code);
+  } catch (error) {
+    output.textContent += "\nHata:\n" + error;
   }
 }
