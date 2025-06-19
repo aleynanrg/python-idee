@@ -2,17 +2,55 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Markasız Python IDE</title>
+  <meta charset="UTF-8" />
+  <title>Pyodide Print Yakalama</title>
   <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    textarea { width: 100%; height: 150px; font-family: monospace; font-size: 16px; }
+    pre { background: #222; color: #0f0; padding: 10px; white-space: pre-wrap; }
+    button { padding: 10px 20px; margin-top: 10px; }
+  </style>
 </head>
 <body>
-  <h1>Python IDE – Kodla ve Çalıştır</h1>
-  <textarea id="code" placeholder="print('Merhaba!')">print("Merhaba!")</textarea>
+  <h2>Pyodide Print Yakalama Örneği</h2>
+  <textarea id="code">print("Merhaba!")</textarea><br>
   <button onclick="runCode()">Çalıştır</button>
   <pre id="output"></pre>
 
-  <script src="main.js"></script>
+  <script>
+    let pyodideReadyPromise;
+
+    window.addEventListener('load', () => {
+      pyodideReadyPromise = loadPyodide();
+    });
+
+    async function runCode() {
+      const output = document.getElementById("output");
+      output.textContent = "Çalıştırılıyor...\n";
+
+      const pyodide = await pyodideReadyPromise;
+
+      // stdout ve stderr çıktısını yakala ve ekrana yazdır
+      pyodide.setStdout({
+        batched: (data) => {
+          output.textContent += data;
+        }
+      });
+      pyodide.setStderr({
+        batched: (data) => {
+          output.textContent += "\nHata: " + data;
+        }
+      });
+
+      output.textContent = ""; // Önceki çıktıyı temizle
+
+      try {
+        let code = document.getElementById("code").value;
+        await pyodide.runPythonAsync(code);
+      } catch (error) {
+        output.textContent += "\nHata:\n" + error;
+      }
+    }
+  </script>
 </body>
 </html>
