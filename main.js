@@ -31,3 +31,9 @@ async function runCode() {
 function clearOutput() {
   document.getElementById("output").textContent = "";
 }
+
+function toggleTheme() {
+  const body = document.body;
+  body.classList.toggle("dark");
+  body.classList.toggle("light");
+}

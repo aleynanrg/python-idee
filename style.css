@@ -2,13 +2,17 @@
 body {
   font-family: Arial, sans-serif;
   padding: 20px;
-  background: #1e1e1e;
-  color: #ddd;
+  transition: all 0.3s;
 }
 
 h1 {
   font-size: 20px;
-  color: #ffc107;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 textarea {
@@ -19,9 +23,9 @@ textarea {
   height: auto;
   font-size: 16px;
   border-radius: 6px;
-  border: 1px solid #444;
-  background-color: #2d2d2d;
-  color: #fff;
+  border: 1px solid var(--border);
+  background-color: var(--editor-bg);
+  color: var(--text);
 }
 
 input[type="text"] {
@@ -30,14 +34,14 @@ input[type="text"] {
   margin: 10px 0;
   font-size: 16px;
   border-radius: 4px;
-  border: 1px solid #666;
-  background-color: #333;
-  color: #fff;
+  border: 1px solid var(--border);
+  background-color: var(--input-bg);
+  color: var(--text);
 }
 
 button {
-  background-color: #4CAF50;
-  color: white;
+  background-color: var(--button-bg);
+  color: var(--button-text);
   padding: 8px 16px;
   border: none;
   margin-right: 10px;
@@ -47,13 +51,36 @@ button {
 }
 
 pre {
-  background-color: #2a2a2a;
+  background-color: var(--output-bg);
   padding: 15px;
   border-radius: 5px;
   white-space: pre-wrap;
-  color: #9f9;
+  color: var(--output-text);
+  border: 1px solid var(--border);
 }
 
-.buttons {
-  margin-bottom: 10px;
+body.light {
+  --editor-bg: #f7f7f7;
+  --input-bg: #fff;
+  --text: #222;
+  --border: #ccc;
+  --output-bg: #fafafa;
+  --output-text: #1a1a1a;
+  --button-bg: #007bff;
+  --button-text: #fff;
+  background: #ffffff;
+  color: #222;
+}
+
+body.dark {
+  --editor-bg: #2d2d2d;
+  --input-bg: #333;
+  --text: #fff;
+  --border: #444;
+  --output-bg: #2a2a2a;
+  --output-text: #9f9;
+  --button-bg: #4CAF50;
+  --button-text: #fff;
+  background: #1e1e1e;
+  color: #ddd;
 }

@@ -3,12 +3,15 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Python IDE – Görevli ve Gelişmiş</title>
+  <title>Python IDE – Tema Seçilebilir</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" id="theme-style">
 </head>
-<body>
-  <h1>🎯 Görev: Adınızı ekrana yazdırın</h1>
+<body class="light">
+  <div class="topbar">
+    <h1>🎯 Görev: Adınızı ekrana yazdırın</h1>
+    <button onclick="toggleTheme()">🌗 Tema Değiştir</button>
+  </div>
   <textarea id="code">isim = input("Adınızı girin:")\nprint("Merhaba", isim)</textarea>
   <input type="text" id="inputBox" placeholder="Adınızı girin" />
   <div class="buttons">
