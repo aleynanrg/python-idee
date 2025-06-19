@@ -2,85 +2,34 @@
 body {
   font-family: Arial, sans-serif;
   padding: 20px;
-  transition: all 0.3s;
+  background: #f9f9f9;
 }
 
 h1 {
-  font-size: 20px;
-}
-
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  font-size: 22px;
 }
 
 textarea {
-  display: none;
-}
-
-.CodeMirror {
-  height: auto;
-  font-size: 16px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  background-color: var(--editor-bg);
-  color: var(--text);
-}
-
-input[type="text"] {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
+  height: 150px;
+  font-family: monospace;
   font-size: 16px;
-  border-radius: 4px;
-  border: 1px solid var(--border);
-  background-color: var(--input-bg);
-  color: var(--text);
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 button {
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
   border: none;
-  margin-right: 10px;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
 }
 
 pre {
-  background-color: var(--output-bg);
+  background-color: #eee;
   padding: 15px;
   border-radius: 5px;
   white-space: pre-wrap;
-  color: var(--output-text);
-  border: 1px solid var(--border);
-}
-
-body.light {
-  --editor-bg: #f7f7f7;
-  --input-bg: #fff;
-  --text: #222;
-  --border: #ccc;
-  --output-bg: #fafafa;
-  --output-text: #1a1a1a;
-  --button-bg: #007bff;
-  --button-text: #fff;
-  background: #ffffff;
-  color: #222;
-}
-
-body.dark {
-  --editor-bg: #2d2d2d;
-  --input-bg: #333;
-  --text: #fff;
-  --border: #444;
-  --output-bg: #2a2a2a;
-  --output-text: #9f9;
-  --button-bg: #4CAF50;
-  --button-text: #fff;
-  background: #1e1e1e;
-  color: #ddd;
 }
